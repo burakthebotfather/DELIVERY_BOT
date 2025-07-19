@@ -122,10 +122,12 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 # --- Запуск бота ---
 if __name__ == "__main__":
-import os
-from telegram.ext import Application
-TOKEN = os.getenv("YOUR_TELEGRAM_BOT_TOKEN")
-application = Application.builder().token(TOKEN).build()
-    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
+    import os
+    from telegram.ext import Application
+
+    TOKEN = os.getenv("YOUR_TELEGRAM_BOT_TOKEN")
+    application = Application.builder().token(TOKEN).build()
+    application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
+
     print("🚀 Бот запущен...")
-    app.run_polling()
+    application.run_polling()
